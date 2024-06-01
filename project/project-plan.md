@@ -33,7 +33,7 @@ The project will include data cleaning, combining the two datasets for each coun
 
 ### Datasource1: Data on CO2 and Greenhouse Gas Emissions by Our World in Data
 * Metadata URL:  https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv
-* Data URL: https://nyc3.digitaloceanspaces.com/owid-public/data/co2/owid-co2-data.csv
+* Data URL: [https://nyc3.digitaloceanspaces.com/owid-public/data/co2/owid-co2-data.csv](https://github.com/owid/co2-data/raw/master/owid-co2-data.csv)
 * Data Type: CSV
 
 The dataset contains a comprehensive record of carbon dioxide emission rates in metric tons per capita across various countries spanning the years 1850 to 2022. This wealth of information enables detailed analysis and understanding of the trends and patterns in carbon emissions on a global scale over the past three decades. By examining this data, researchers can identify countries with consistently high or low emission rates, pinpoint periods of significant increases or decreases in emissions, and assess the effectiveness of policies and initiatives aimed at mitigating carbon emissions.
