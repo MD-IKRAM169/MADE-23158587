@@ -1,0 +1,79 @@
+pipeline TrainGoodsTransport {
+
+    TrainGoodsDataExtractor
+    -> TrainGoodsTextFileInterpreter
+    -> TrainGoodsTextRangeSelector
+    -> TrainGoodsCSVParser
+    -> TrainGoodsHeaderWriterPrimary
+    -> TrainGoodsHeaderWriterSecondary
+    -> TrainGoodsTableInterpreter
+    -> TrainGoodsSQLiteLoader;
+
+    block TrainGoodsDataExtractor oftype HttpExtractor {
+        url:"https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
+    }
+
+    block TrainGoodsTextFileInterpreter oftype TextFileInterpreter {
+        encoding: "latin2"; 
+    }
+
+    block TrainGoodsTextRangeSelector oftype TextRangeSelector {
+        lineFrom:9;
+    }
+
+    block TrainGoodsCSVParser oftype CSVInterpreter {
+        delimiter:";";
+    }
+
+    block TrainGoodsHeaderWriterPrimary oftype CellWriter {
+        at: range A1:E1;
+        write: ['year', 'month', 'goods_id', 'goods_name', 'goods_source'];
+    }
+
+    block TrainGoodsHeaderWriterSecondary oftype CellWriter {
+        at: range AT1:AU1;
+        write: ['abroad', 'total'];
+    }
+
+    block TrainGoodsTableInterpreter oftype TableInterpreter {
+        header: true;
+
+        columns:[
+            'year' oftype PositiveInteger,
+            'month' oftype GermanMonth,
+            'goods_name' oftype text,
+            'goods_source' oftype text,
+            'goods_id' oftype GoodsIdentifier,
+            'abroad' oftype PositiveInteger,
+            'total' oftype PositiveInteger
+        ];
+    }
+
+    block TrainGoodsSQLiteLoader oftype SQLiteLoader {
+        table:'goods';
+        file:'trainGoodsTransport.sqlite';
+    }
+
+    constraint PositiveNumberConstraint on decimal:
+        value >= 0;
+    
+    constraint ValidMonthConstraint oftype AllowlistConstraint {
+        allowlist:['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+    }
+
+    constraint GoodsIdFormatConstraint oftype RegexConstraint {
+        regex: /^NST7-([A-Z0-9]{3})$/;
+    }
+    
+    valuetype PositiveInteger oftype integer {
+        constraints:[PositiveNumberConstraint];
+    }
+
+    valuetype GermanMonth oftype text {
+        constraints:[ValidMonthConstraint];
+    }
+
+    valuetype GoodsIdentifier oftype text {
+        constraints:[GoodsIdFormatConstraint];
+    }
+}
