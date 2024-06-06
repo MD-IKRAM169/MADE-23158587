@@ -39,7 +39,7 @@ The data includes extensive reports of CO2 emissions for a number of countries o
 ### Datasource2: Worldwide Sea Level Pressure 
 * Metadata URL: https://opendata.dwd.de/climate_environment/CDC/observations_global/CLIMAT/monthly/qc/mean_sea_level_pressure/historical/
 * Data URL: https://opendata.dwd.de/climate_environment/CDC/observations_global/CLIMAT/monthly/qc/mean_sea_level_pressure/historical/01001_195101_202112.txt
-* Data Type: CSV
+* Data Type: TXT
 
 The dataset is a time series of monthly mean sea level measurements spanning from 1951 to 2015. Each row represents a year, with columns for the sea level measurements for each month (January through December). The data is in a text format, which includes the year and the corresponding sea level values for each month. This dataset was chosen for its relevance in studying climate change, sea level rise, and their potential impacts on coastal regions. The dataset is also under the Creative Commons Attribution 4.0 International (CC BY 4.0) license like Data Source 1.
 
