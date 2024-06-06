@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 class Pipeline:
     def __init__(self):
         self.data = None
-        self.engine = create_engine('sqlite:///../data/co2_data.db')
+        self.engine = create_engine('sqlite:///../data/Output_data.db')
 
     def get_data(self):
         downloaded = requests.get("https://github.com/owid/co2-data/raw/master/owid-co2-data.csv")
@@ -26,7 +26,7 @@ class Pipeline:
         df = pd.read_csv(url, sep=";")
         df = df.bfill()
         self.data2 = df
-        self.data2.to_sql("year temperature", self.engine, index=False, if_exists='replace')
+        self.data2.to_sql("Mean_Sea_Level", self.engine, index=False, if_exists='replace')
         
 
     def transform(self):
@@ -36,7 +36,7 @@ class Pipeline:
         self.data.temperature_change_from_co2 = self.data.temperature_change_from_co2.bfill()
 
     def save(self):
-        self.data.to_sql("co2_data", self.engine, index=False, if_exists='replace')
+        self.data.to_sql("CO2_data", self.engine, index=False, if_exists='replace')
 
     def run_pipeline(self):
         self.get_data()
