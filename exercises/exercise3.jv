@@ -1,79 +1,80 @@
-pipeline TrainGoodsTransport {
+pipeline ProductTransported{
 
-    TrainGoodsDataExtractor
-    -> TrainGoodsTextFileInterpreter
-    -> TrainGoodsTextRangeSelector
-    -> TrainGoodsCSVParser
-    -> TrainGoodsHeaderWriterPrimary
-    -> TrainGoodsHeaderWriterSecondary
-    -> TrainGoodsTableInterpreter
-    -> TrainGoodsSQLiteLoader;
-
-    block TrainGoodsDataExtractor oftype HttpExtractor {
+    block ProductTransportedExtractor oftype HttpExtractor {
         url:"https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
     }
 
-    block TrainGoodsTextFileInterpreter oftype TextFileInterpreter {
-        encoding: "latin3"; 
+    block ProductTransportedTextFileInterpreter oftype TextFileInterpreter {
+        encoding:"latin2";
     }
 
-    block TrainGoodsTextRangeSelector oftype TextRangeSelector {
-        lineFrom:9;
+    block ProductTransportedTextRangeSelector oftype TextRangeSelector {
+        lineFrom:8;
     }
 
-    block TrainGoodsCSVParser oftype CSVInterpreter {
+    block ProductTransportedCSVInterpreter oftype CSVInterpreter {
         delimiter:";";
     }
 
-    block TrainGoodsHeaderWriterPrimary oftype CellWriter {
+
+    block ProductTransportedHeaderWriter oftype CellWriter {
         at: range A1:E1;
-        write: ['year', 'month', 'goods_id', 'goods_name', 'goods_source'];
+         write: ['year', 'month', 'goods_id', 'goods_name', 'goods_source'];
     }
 
-    block TrainGoodsHeaderWriterSecondary oftype CellWriter {
+    block ProductTransportedHeaderWriter2 oftype CellWriter {
         at: range AT1:AU1;
-        write: ['abroad', 'total'];
+         write: ['abroad', 'total'];
     }
 
-    block TrainGoodsTableInterpreter oftype TableInterpreter {
+    block ProductTransportedTableInterpreter oftype TableInterpreter {
         header: true;
 
         columns:[
-            'year' oftype PositiveInteger,
+            'year' oftype Numeric,
             'month' oftype GermanMonth,
             'goods_name' oftype text,
             'goods_source' oftype text,
-            'goods_id' oftype GoodsIdentifier,
-            'abroad' oftype PositiveInteger,
-            'total' oftype PositiveInteger
+            'goods_id' oftype GoodsId,
+            'abroad' oftype Numeric,
+            'total' oftype Numeric
         ];
     }
 
-    block TrainGoodsSQLiteLoader oftype SQLiteLoader {
+    block ProductTransportedLoader oftype SQLiteLoader {
         table:'goods';
-        file:'trainGoodsTransport.sqlite';
+        file:'goodsTransportedByTrain.sqlite';
     }
 
-    constraint PositiveNumberConstraint on decimal:
+    ProductTransportedExtractor
+    -> ProductTransportedTextFileInterpreter
+    -> ProductTransportedTextRangeSelector
+    -> ProductTransportedCSVInterpreter
+    -> ProductTransportedHeaderWriter
+    -> ProductTransportedHeaderWriter2
+    -> ProductTransportedTableInterpreter
+    -> ProductTransportedLoader;
+
+    constraint NumeriConstrant on decimal:
         value >= 0;
     
-    constraint ValidMonthConstraint oftype AllowlistConstraint {
+    constraint MonthConstraint oftype AllowlistConstraint {
         allowlist:['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
     }
 
-    constraint GoodsIdFormatConstraint oftype RegexConstraint {
+    constraint GoodsIdConstraint oftype RegexConstraint {
         regex: /^NST7-([A-Z0-9]{3})$/;
     }
     
-    valuetype PositiveInteger oftype integer {
-        constraints:[PositiveNumberConstraint];
+    valuetype Numeric oftype integer {
+        constraints:[NumeriConstrant];
     }
 
     valuetype GermanMonth oftype text {
-        constraints:[ValidMonthConstraint];
+        constraints:[MonthConstraint];
     }
 
-    valuetype GoodsIdentifier oftype text {
-        constraints:[GoodsIdFormatConstraint];
+    valuetype GoodsId oftype text {
+        constraints:[GoodsIdConstraint];
     }
 }
