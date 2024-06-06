@@ -2,30 +2,24 @@
 
 ## Title
 <!-- Give your project a short title. -->
-Exploring the Link Between Carbon Dioxide Emissions and Global Food Security.
+Analyzing the Correlation Between Carbon Dioxide Emissions and Mean Sea Level Pressure.
 
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. Is there a correlation between a country's carbon dioxide emissions and its food production levels?
+1. What are the historical trends in carbon dioxide emissions in Europe from 1850 to 2022?
 
-2. Do countries with higher CO2 emissions experience lower or higher crop yields per unit of land area?
-
-3. Which countries produce the most food per unit of CO2 emitted (essentially measuring food production efficiency)?
-
-4. Based on current trends in CO2 emissions and food production practices, can we predict future impacts on global food security?
-
-5. Are there any geographical patterns in carbon dioxide emissions that correlate with specific climate zones?
+2. How has the mean sea level pressure changed globally over time?
 
 
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-The main objective of this project is to study the connection between carbon dioxide emissions and food production of a country. We'll analyze two datasets: one that consists of CO2 emissions per country and another that encompasses food production data, including land use for agriculture.
+The main objective of this project is to study the connection between carbon dioxide emissions and Sea level mean pressure. We'll analyze two datasets: one that consists of CO2 emissions per country and another that encompasses global sea level mean pressure.
 
-Climate change, which is caused by greenhouse gases such as CO2, is a major danger to food security worldwide. This project intends to explore the ways in which a country's emissions may affect its food production capacity. By studying the relationships and possible tendencies, we can reveal which countries are most vulnerable and where the emissions reduction could be crucial for preserving food production.
+Carbon dioxide (CO2) emissions are a major contributor to global warming, and understanding their impact on atmospheric conditions is vital for predicting future climate patterns. Mean sea level pressure (MSLP) is a key indicator of atmospheric behavior and changes in weather systems. By investigating the relationship between CO2 emissions and MSLP, this study aims to provide insights into how human activities influence atmospheric dynamics, which is essential for developing effective climate mitigation 
 
-The project will include data cleaning, combining the two datasets for each country, and looking for potential associations between emissions and food production metrics. We could also use visualization to show these connections and perhaps use statistical modeling to calculate the impact of emissions on food production.
+The project will include data cleaning, combining the two datasets for country's, and looking for potential associations between emissions and Sea level metrics. We could also use visualization to show these connections and perhaps use statistical modeling to calculate the impact of emissions on sea level.
 
 ## Datasources
 
@@ -33,21 +27,21 @@ The project will include data cleaning, combining the two datasets for each coun
 
 ### Datasource1: Data on CO2 and Greenhouse Gas Emissions by Our World in Data
 * Metadata URL:  https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv
-* Data URL: [https://nyc3.digitaloceanspaces.com/owid-public/data/co2/owid-co2-data.csv](https://github.com/owid/co2-data/raw/master/owid-co2-data.csv)
+* Data URL: https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv
 * Data Type: CSV
 
-The dataset contains a comprehensive record of carbon dioxide emission rates in metric tons per capita across various countries spanning the years 1850 to 2022. This wealth of information enables detailed analysis and understanding of the trends and patterns in carbon emissions on a global scale over the past three decades. By examining this data, researchers can identify countries with consistently high or low emission rates, pinpoint periods of significant increases or decreases in emissions, and assess the effectiveness of policies and initiatives aimed at mitigating carbon emissions.
+The data includes extensive reports of CO2 emissions for a number of countries over a period of time ranging from 1850 to 2022.The reason for selecting this dataset which is that, it provides extensive year-by-year data required for understanding historical trends of carbon emissions. Drawn from Our World in Data which is a highly regarded platform, it contains data on CO2 emissions from fossil fuels and cement production, and gas flaring which makes it a rich database for environmental and climate analysis. Nonetheless, some gaps may exist in the collection of data due to either errors in the process or because certain historical archives were not well documented. The data is used under the license Creative Commons Attribution 4.0 International (CC BY 4.0), which provides permission to use it wisely while citing the source, providing the metadata link and the source data link, and mentioning modifications if any.
 
 ## Datasources
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource2: FAOSTAT
-* Metadata URL: https://www.fao.org/home/en
-* Data URL: https://www.fao.org/faostat/en/#data/QCL
+### Datasource2: Worldwide Sea Level Pressure 
+* Metadata URL: https://opendata.dwd.de/climate_environment/CDC/observations_global/CLIMAT/monthly/qc/mean_sea_level_pressure/historical/
+* Data URL: https://opendata.dwd.de/climate_environment/CDC/observations_global/CLIMAT/monthly/qc/mean_sea_level_pressure/historical/01001_195101_202112.txt
 * Data Type: CSV
 
-The dataset offers an extensive record of food production by land area utilization and total output for every country worldwide from 1990 to 2022. This comprehensive collection of data provides invaluable insights into global agricultural trends, enabling researchers and policymakers to analyze and understand patterns in food production over the past three decades. By examining this dataset, researchers can identify countries with significant agricultural output, assess the efficiency of land use in food production, and track changes in production levels over time.
+The dataset is a time series of monthly mean sea level measurements spanning from 1951 to 2015. Each row represents a year, with columns for the sea level measurements for each month (January through December). The data is in a text format, which includes the year and the corresponding sea level values for each month. This dataset was chosen for its relevance in studying climate change, sea level rise, and their potential impacts on coastal regions. The dataset is also under the Creative Commons Attribution 4.0 International (CC BY 4.0) license like Data Source 1.
 
 ## Work Packages
 
