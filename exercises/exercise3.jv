@@ -14,7 +14,7 @@ pipeline TrainGoodsTransport {
     }
 
     block TrainGoodsTextFileInterpreter oftype TextFileInterpreter {
-        encoding: "latin2"; 
+        encoding: "latin3"; 
     }
 
     block TrainGoodsTextRangeSelector oftype TextRangeSelector {
