@@ -25,5 +25,4 @@ jobs:
 
     - name: Run tests
       run: |
-        chmod +x ./project/ python tests.py
-        ./project/ python tests.py
+        python -m unittest discover -s . -p 'tests.py'
