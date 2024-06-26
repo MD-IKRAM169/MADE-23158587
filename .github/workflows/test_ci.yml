@@ -2,11 +2,10 @@ name: Test CI
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
+    paths: ["project/test.sh","project/pipeline_test.py","project/pipeline.py","project/test/*"]
+
+
 
 jobs:
   build:
