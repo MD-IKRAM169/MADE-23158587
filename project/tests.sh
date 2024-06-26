@@ -1,3 +1,2 @@
 #!/bin/bash
- tests.py
-
+ ./project/tests.py
