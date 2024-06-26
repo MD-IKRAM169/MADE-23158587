@@ -1,3 +1,3 @@
 #!/bin/bash
- python pipeline.py
+ pipeline.py
 
