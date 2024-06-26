@@ -23,7 +23,6 @@ class TestPipeline(unittest.TestCase):
     def test_transform(self):
         self.pipeline.get_data()
         self.pipeline.transform()
-        # self.assertTrue('Europe' in self.pipeline.data['country'].values)
         self.assertFalse(self.pipeline.data['co2'].isnull().any())
 
     def test_save(self):
