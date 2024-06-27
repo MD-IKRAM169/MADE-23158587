@@ -25,5 +25,5 @@ jobs:
         
     - name: pipeline
       run: |
-        chmod +x ./project/pipeline.sh
-        ./project/pipeline.sh
+        chmod +x ./project/pipeline.py
+        ./project/pipeline.py
