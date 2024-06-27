@@ -23,7 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r ./project/requirements.txt
         
-    - name: Pipeline Tests
+    - name: Pipeline
       run: |
-        chmod +x ./project/tests.sh
-        ./project/tests.sh
+        chmod +x ./project/pipeline.sh
+        ./project/pipeline.sh
