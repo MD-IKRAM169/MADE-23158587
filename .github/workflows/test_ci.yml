@@ -1,26 +1,29 @@
-name: Run Pipeline
+name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  run-pipeline:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.12'
+        python-version: 3.12
 
-    - name: Install dependencies
+    - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r ./project/requirements.txt
 
-    - name: Run pipeline script
+    - name: Pipeline Tests
       run: |
-        chmod +x pipeline.sh
-        ./pipeline.sh
+        chmod +x ./project/tests.sh
+        ./project/tests.sh
