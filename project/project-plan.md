@@ -11,6 +11,8 @@ Analyzing the Correlation Between Carbon Dioxide Emissions and Mean Sea Level Pr
 
 2. How has the mean sea level pressure changed globally over time?
 
+3. How do CO2 emissions and the increasing temperature make an impact on sea level pressure?
+
 
 ## Description
 
@@ -41,11 +43,15 @@ The data includes extensive reports of CO2 emissions for a number of countries o
 * Data URL: https://opendata.dwd.de/climate_environment/CDC/observations_global/CLIMAT/monthly/qc/mean_sea_level_pressure/historical/01001_195101_202112.txt
 * Data Type: TXT
 
-The dataset is a time series of monthly mean sea level measurements spanning from 1951 to 2015. Each row represents a year, with columns for the sea level measurements for each month (January through December). The data is in a text format, which includes the year and the corresponding sea level values for each month. This dataset was chosen for its relevance in studying climate change, sea level rise, and their potential impacts on coastal regions. The dataset is also under the Creative Commons Attribution 4.0 International (CC BY 4.0) license like Data Source 1.
+The dataset is a time series of monthly mean sea level measurements spanning from 1951 to 2021. Each row represents a year, with columns for the sea level measurements for each month (January through December). The data is in a text format, which includes the year and the corresponding sea level values for each month. This dataset was chosen for its relevance in studying climate change, sea level rise, and their potential impacts on coastal regions. The dataset is also under the Creative Commons Attribution 4.0 International (CC BY 4.0) license like Data Source 1.
 
 ## Work Packages
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 [1. Extract the data from the two data sources](https://github.com/MD-IKRAM169/Project-Work-1_Md-Ikram-Tareq/issues/1)
+2. Building pipeline.
+3. Test data.
+4. Analyze data.
+5. Report on finding results.
 
