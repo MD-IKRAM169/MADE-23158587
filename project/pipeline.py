@@ -8,7 +8,7 @@ class Pipeline:
         self.engine = create_engine('sqlite:///../data/Output_data.db')
 
     def get_data(self):
-        downloaded = requests.get("https://github.com/owid/co2-data/raw/master/owid-co2-data.csv")
+        downloaded = requests.get("https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv")
 
         if downloaded.status_code == 200:
             with open('file.csv', 'wb') as file:
