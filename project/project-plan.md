@@ -11,7 +11,7 @@ Analyzing the Correlation Between Carbon Dioxide Emissions and Mean Sea Level Pr
 
 2. How has the mean sea level pressure changed globally over time?
 
-3. How do CO2 emissions and the increasing temperature make an impact on sea level pressure?
+3. How do CO2 emissions and the increasing population make an impact on sea level pressure?
 
 
 ## Description
