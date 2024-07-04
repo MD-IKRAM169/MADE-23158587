@@ -2,7 +2,6 @@ import pandas as pd
 import requests
 from sqlalchemy import create_engine
 
-
 class Pipeline:
     def __init__(self):
         self.data = None
@@ -17,7 +16,6 @@ class Pipeline:
             
             df = pd.read_csv("file.csv")
             self.data = df
-
         else:
             print(f"Download failed!")
 
@@ -27,11 +25,18 @@ class Pipeline:
         df = df.bfill()
         self.data2 = df
         self.data2.to_sql("Mean_Sea_Level", self.engine, index=False, if_exists='replace')
-        
 
     def transform(self):
-        self.data = self.data[self.data["country"]=="Europe"]
-        self.data = self.data[self.data["co2"].notna()][["year", "population", "co2","temperature_change_from_co2", "co2_growth_prct"]]
+        european_countries = [
+            "Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", "Belgium", "Bosnia and Herzegovina",
+            "Bulgaria", "Croatia", "Cyprus", "Czechia", "Denmark", "Estonia", "Finland", "France", "Georgia", "Germany",
+            "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kazakhstan", "Kosovo", "Latvia", "Liechtenstein", "Lithuania",
+            "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland",
+            "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland",
+            "Turkey", "Ukraine", "United Kingdom", "Vatican City"
+        ]
+        self.data = self.data[self.data["country"].isin(european_countries)]
+        self.data = self.data[self.data["co2"].notna()][["country", "year", "population", "co2", "temperature_change_from_co2", "co2_growth_prct"]]
         self.data.population = self.data.population.bfill()
         self.data.temperature_change_from_co2 = self.data.temperature_change_from_co2.bfill()
 
@@ -43,8 +48,6 @@ class Pipeline:
         self.get_data1()
         self.transform()
         self.save()
-
-
 
 if __name__ == '__main__':
     pipe = Pipeline()
